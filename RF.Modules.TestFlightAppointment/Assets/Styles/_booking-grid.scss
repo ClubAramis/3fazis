@@ -1,0 +1,74 @@
+/******************************************************************************
+ *
+ *   Copyright Corvinus University of Budapest, Budapest, HUN.
+ *
+ * ---------------------------------------------------------------------------
+ *   This is a part of the RF.Modules.TestFlightAppointment project
+ *
+ *****************************************************************************/
+
+ @import "util";
+
+ table.tf-booking-grid {
+    width: 100%;    
+    & .not-available {
+        background-color: #ccc;
+        color: #888;
+    }
+    
+    & .booked {
+        background-color: #ccccff;
+        color: black;
+
+        .box {
+            border: 1px solid #8787c2;
+        }
+    }
+    
+    & .free {
+        background-color: white;
+        color: black;
+
+        .box {
+            &:hover {
+                background-color: rgb(208, 236, 208);
+            }
+        }
+    }
+
+    tr {
+        height: 1px;
+
+        td {
+            width: 12.5%;
+            height: 1px;
+
+            .box {
+                padding: 3px;
+                height: 100%;
+                width: 100%;
+                text-decoration: none;
+
+                &:hover {
+                    span {
+                        &.autohide {
+                            visibility: visible;
+                        }
+                    }
+                }
+
+                span {
+                    display: inline-block;
+
+                    &.autohide {
+                        visibility: hidden;
+                        font-weight: bold;
+                        @include position-centered();
+                    }
+                }
+
+            }
+        }
+    }
+}
+

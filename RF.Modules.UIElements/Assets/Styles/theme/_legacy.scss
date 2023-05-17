@@ -1,0 +1,342 @@
+/******************************************************************************
+ *
+ *   Copyright Corvinus University of Budapest, Budapest, HUN.
+ *
+ * ---------------------------------------------------------------------------
+ *   This is a part of the RF.Modules.UIElements project
+ *
+ *   DEMO SITE THEME
+ *
+ *****************************************************************************/
+
+@import "theme/font";
+@import "theme/variables";
+
+$cl-background: #FFF5BC;
+$cl-foreground: #333333;
+
+$cl-bg-header: black;
+$cl-bg-header-topbar: #d15400;
+
+$cl-link-header: white;
+
+body {
+    background: $cl-background;
+    color: $cl-foreground;
+    overflow-x: hidden;
+}
+
+.dnnbooster header .fixed-top {
+    background: $cl-bg-header;
+}
+
+.dnnbooster header span,
+.dnnbooster header span.normal {
+    color: white
+}
+
+.dnnbooster header .topbar {
+    background: $cl-bg-header-topbar;
+    color: white
+}
+
+.dnnbooster header .topbar .general-functions a:active,
+.dnnbooster header .topbar .general-functions a:focus,
+.dnnbooster header .topbar .general-functions a:link,
+.dnnbooster header .topbar .general-functions a:visited {
+    color: $cl-link-header
+}
+
+.dnnbooster header .topbar .general-functions a:hover {
+    background: $cl-dark-2;
+    color: white
+}
+
+.dnnbooster header .topbar .general-functions .dropdown-toggle:after {
+    display: none
+}
+
+.dnnbooster header .topbar .general-functions li {
+    border-right-color: #9dbbb7
+}
+
+.dnnbooster header .topbar .general-functions li .notification-holder .buttonGroup .userNotifications span {
+    color: white
+}
+
+.dnnbooster header .topbar .general-functions li .profile-holder a {
+    border-left-color: $cl-link-header;
+}
+
+.dnnbooster header .topbar .general-functions li .profile-holder .buttonGroup .userProfileImg img {
+    border-color: $cl-link-header;
+}
+
+.dnnbooster header .topbar .general-functions li .profile-holder .buttonGroup .userProfileImg img:hover {
+    border-color: white
+}
+
+.dnnbooster header .topbar .language-object .Language.selected img {
+    border: solid 1px #5D7370
+}
+
+.dnnbooster header .search-bar .searchInputContainer ul.searchSkinObjectPreview {
+    background: white;
+    border: 1px solid #83b836
+}
+
+.dnnbooster header .navbar .navbar-toggler-icon {
+    background: white
+}
+
+.dnnbooster header .navbar .navbar-brand {
+    margin-left: 24pt;
+    padding-top: 10px;
+    color: white;
+}
+
+.dnnbooster header .navbar .navbar-nav .nav-link {
+    color: $cl-link-header;
+}
+
+.dnnbooster header .navbar .navbar-nav .nav-link:hover {
+    background: $cl-light-2;
+    color: $cl-dark-2
+}
+
+.dnnbooster header .navbar .navbar-nav .nav-item.active {
+    background: $cl-bg-header-topbar;
+    color: white
+}
+
+.dnnbooster header .navbar .navbar-nav .nav-item .dropdown-menu {
+    background: $cl-bg-header
+}
+
+.dnnbooster header .navbar .navbar-nav .nav-item .dropdown-menu .dropdown-item:focus,
+.dnnbooster header .navbar .navbar-nav .nav-item .dropdown-menu .dropdown-item:hover {
+    color: white;
+    background-color: $cl-dark-1;
+}
+
+.dnnbooster header .navbar .navbar-toggler .toggle-bar {
+    background: white
+}
+
+.dnnbooster header .navbar .navbar-toggler .toggle-bar.middle1,
+.dnnbooster header .navbar .navbar-toggler .toggle-bar.middle2 {
+    background: #5D7370
+}
+
+.dnnbooster header .navbar .navbar-toggler.open .toggle-bar.middle1 {
+    background: #5D7370
+}
+
+.dnnbooster header .navbar .navbar-toggler.open .toggle-bar.middle2 {
+    background: #5D7370
+}
+
+.dnnbooster .page-header {
+    border-bottom: solid 1px #e6e6e6
+}
+
+.dnnbooster footer {
+    background: $cl-bg-header;
+    color: $cl-link-header
+}
+
+.dnnbooster footer a:active,
+.dnnbooster footer a:focus,
+.dnnbooster footer a:link,
+.dnnbooster footer a:visited {
+    color: $cl-link-header
+}
+
+.dnnbooster footer a:hover {
+    color: white
+}
+
+.dnnbooster footer .legal-footer {
+    background: $cl-bg-header-topbar
+}
+
+.dnnbooster .bootsterContainer.dnnc-clean h1.lined,
+.dnnbooster .bootsterContainer.dnnc-clean h2.lined,
+.dnnbooster .bootsterContainer.dnnc-clean h3.lined,
+.dnnbooster .bootsterContainer.dnnc-clean h4.lined,
+.dnnbooster .bootsterContainer.dnnc-clean h5.lined,
+.dnnbooster .bootsterContainer.dnnc-clean h6.lined {
+    border-bottom: solid 1px $cl-foreground
+}
+
+.dnnbooster .bootsterContainer.dnnc-panel {
+    background-color: white;
+    border-color: $cl-foreground
+}
+
+.dnnbooster .bootsterContainer.dnnc-panel .panel-heading {
+    border-bottom-color: $cl-foreground
+}
+
+.dnnbooster .bootsterContainer.dnnc-panel.primary {
+    border-color: #0069d9
+}
+
+.dnnbooster .bootsterContainer.dnnc-panel.primary .panel-heading {
+    color: white;
+    background-color: #007bff;
+    border-color: #0069d9
+}
+
+.dnnbooster .bootsterContainer.dnnc-panel.secondary {
+    border-color: #727b84
+}
+
+.dnnbooster .bootsterContainer.dnnc-panel.secondary .panel-heading {
+    color: white;
+    background-color: #868e96;
+    border-color: #727b84
+}
+
+.dnnbooster .bootsterContainer.dnnc-panel.success {
+    border-color: #218838
+}
+
+.dnnbooster .bootsterContainer.dnnc-panel.success .panel-heading {
+    color: white;
+    background-color: #28a745;
+    border-color: #218838
+}
+
+.dnnbooster .bootsterContainer.dnnc-panel.info {
+    border-color: #138496
+}
+
+.dnnbooster .bootsterContainer.dnnc-panel.info .panel-heading {
+    color: white;
+    background-color: #17a2b8;
+    border-color: #138496
+}
+
+.dnnbooster .bootsterContainer.dnnc-panel.warning {
+    border-color: #e0a800
+}
+
+.dnnbooster .bootsterContainer.dnnc-panel.warning .panel-heading {
+    color: white;
+    background-color: #ffc107;
+    border-color: #e0a800
+}
+
+.dnnbooster .bootsterContainer.dnnc-panel.danger {
+    border-color: #c82333
+}
+
+.dnnbooster .bootsterContainer.dnnc-panel.danger .panel-heading {
+    color: white;
+    background-color: #dc3545;
+    border-color: #c82333
+}
+
+.dnnbooster .bootsterContainer.dnnc-panel.light {
+    border-color: #e2e6ea
+}
+
+.dnnbooster .bootsterContainer.dnnc-panel.light .panel-heading {
+    color: #343a40;
+    background-color: #f8f9fa;
+    border-color: #e2e6ea
+}
+
+.dnnbooster .bootsterContainer.dnnc-panel.dark {
+    border-color: #23272b
+}
+
+.dnnbooster .bootsterContainer.dnnc-panel.dark .panel-heading {
+    color: white;
+    background-color: #343a40;
+    border-color: #23272b
+}
+
+.dnnbooster .list li:before {
+    color: #83b836
+}
+
+.dnnbooster .social-list li a {
+    color: $cl-bg-header
+}
+
+.dnnbooster .social-list.square li a {
+    background: $cl-bg-header
+}
+
+.dnnbooster .social-list.square-border li a {
+    border-color: $cl-bg-header
+}
+
+.dnnbooster .social-list.round li a {
+    background: $cl-bg-header
+}
+
+.dnnbooster .social-list.round.small li a {
+    background: $cl-bg-header
+}
+
+.dnnbooster .social-list.round.large li a {
+    background: $cl-bg-header
+}
+
+.dnnbooster .social-list.round-border li a {
+    border-color: $cl-bg-header
+}
+
+.dnnbooster .social-list.round-border.small li a {
+    border-color: $cl-bg-header
+}
+
+.dnnbooster .social-list.round-border.large li a {
+    border-color: $cl-bg-header
+}
+
+.dnnbooster a:active,
+.dnnbooster a:focus,
+.dnnbooster a:link,
+.dnnbooster a:visited {
+    color: #5D7370
+}
+
+.dnnbooster a:hover {
+    color: $cl-foreground
+}
+
+.dnnbooster h1,
+.dnnbooster h2,
+.dnnbooster h3,
+.dnnbooster h4,
+.dnnbooster h5,
+.dnnbooster h6 {
+    color: $cl-foreground
+}
+
+.dnnbooster padding {
+    color: $cl-foreground
+}
+
+@media (max-width:768px) {
+    .dnnbooster .dropdown-menu {
+        background-color: $cl-foreground
+    }
+
+    .dnnbooster .dropdown-menu .dropdown-item {
+        color: white
+    }
+
+    .dnnbooster .dropdown-menu .dropdown-item:before {
+        color: white
+    }
+
+    .dnnbooster .dropdown-menu .dropdown-item:hover,
+    .dnnbooster .dropdown-menu .dropdown-itemfocus {
+        background: $cl-foreground
+    }
+}

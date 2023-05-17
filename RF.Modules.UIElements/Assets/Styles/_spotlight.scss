@@ -1,0 +1,93 @@
+/******************************************************************************
+ *
+ *   Copyright Corvinus University of Budapest, Budapest, HUN.
+ *
+ * ---------------------------------------------------------------------------
+ *   This is a part of the RF.Modules.UIElements project
+ *
+ *****************************************************************************/
+
+$title-font-size: 24pt;
+$detail-font-size: 14pt;
+
+$cl-spotlight-foreground: white;
+$cl-spotlight-background: black;
+
+$vertical-spacing: 80px;
+
+.rf-uielements-spotlight {
+    position: relative;
+    margin: 0 -15px;
+    padding: 0;
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    overflow: hidden;
+
+    .content {
+        position: relative;
+        width: 100vw;
+        overflow: hidden;
+
+        &.top {
+            top: 0;
+            margin-top: $vertical-spacing;
+        }
+
+        &.bottom {
+            position: absolute;
+            bottom: 0;
+            margin-bottom: $vertical-spacing;
+        }
+        
+        &.left {
+            margin-left: 80px;
+        }
+
+        &.right {
+            margin-right: 80px;
+            text-align: right;
+        }
+
+        .title,
+        .detail {
+            display: inline-block;
+            position: relative;
+            margin-left: 80px;
+        }
+
+        .title {
+            display: inline-block;
+            padding: 0px 11px;
+            position: relative;
+            text-transform: uppercase;
+            font-size: $title-font-size;
+            font-weight: lighter;
+            margin-bottom: 0;
+
+            &.normal {
+                color: $cl-spotlight-background;
+                background-color: $cl-spotlight-foreground;
+            }
+
+            &.invert {
+                color: $cl-spotlight-foreground;
+                background-color: $cl-spotlight-background;
+            }
+        }
+
+        .detail {
+            font-size: $detail-font-size;
+            margin-bottom: 14pt;
+            max-width: 50vw;
+            &.normal {
+                color: $cl-spotlight-foreground;
+            }
+
+            &.invert {
+                color: $cl-spotlight-background;
+            }
+        }
+    }
+}

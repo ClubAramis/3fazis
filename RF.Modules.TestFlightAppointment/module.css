@@ -1,0 +1,197 @@
+
+
+.dnnDeleteAction,
+.dnnPrimaryAction {
+  padding: 6px 6px;
+  line-height: 18px;
+}
+
+.dnnFormItem input,
+.dnnFormItem select {
+  height: 34px;
+}
+
+fieldset.dnnInlineForm {
+  display: flex;
+  flex-direction: row;
+}
+fieldset.dnnInlineForm .dnnFormItem {
+  display: inline-block;
+  flex-grow: 1;
+  flex-basis: 0;
+  width: unset;
+  padding-right: 10px;
+}
+fieldset.dnnInlineForm .dnnFormItem:last-child {
+  padding-right: 0px;
+}
+fieldset.dnnInlineForm .dnnFormItem input,
+fieldset.dnnInlineForm .dnnFormItem select {
+  width: 100%;
+  max-width: unset;
+  box-sizing: border-box;
+}
+fieldset.dnnInlineForm .dnnFormItem .dnnFormError {
+  top: -15px;
+  display: inline-block;
+  position: relative;
+  margin-left: 13px;
+  color: red;
+}
+
+.dnnDeleteAction {
+  display: inline-block;
+  margin-bottom: 9px;
+  cursor: pointer;
+  min-width: 75px;
+  *overflow: visible;
+  border: 1px solid #c2c2c2;
+  background: #eaeaea;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  color: #333;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  border-color: #9e0d0d; 
+  background: #ed3737;
+  -webkit-box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.6), inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4);
+  box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.6), inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4);
+  color: #efefef;
+  text-shadow: 0px -1px 0px #931818;
+  background: -moz-linear-gradient(top, #ea3535 0%, #cd2121 100%); 
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ea3535), color-stop(100%, #cd2121)); 
+  background: -webkit-linear-gradient(top, #ea3535 0%, #cd2121 100%); 
+  background: linear-gradient(top, #ea3535 0%, #cd2121 100%); 
+}
+.dnnDeleteAction:hover {
+  border-color: #9e0d0d;
+  background: #f36c6c;
+  color: #fff;
+  background: -moz-linear-gradient(top, #f36c6c 0%, #d24343 100%); 
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f36c6c), color-stop(100%, #d24343)); 
+  background: -webkit-linear-gradient(top, #f36c6c 0%, #d24343 100%); 
+  background: linear-gradient(top, #f36c6c 0%, #d24343 100%); 
+}
+.dnnDeleteAction:visited {
+  color: white;
+}
+.dnnDeleteAction:active {
+  border-color: #9e0d0d;
+  background: #be1f1f;
+  -webkit-box-shadow: inset 0px 1px 5px 0px rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0px 1px 5px 0px rgba(0, 0, 0, 0.4);
+  color: #fff;
+  background: -moz-linear-gradient(top, #be1f1f 0%, #e03030 100%); 
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #be1f1f), color-stop(100%, #e03030)); 
+  background: -webkit-linear-gradient(top, #be1f1f 0%, #e03030 100%); 
+  background: linear-gradient(top, #be1f1f 0%, #e03030 100%); 
+}
+
+
+.tf-header h2 {
+  margin-left: 12.5%;
+}
+.tf-header hr {
+  background-color: black;
+  height: 1px;
+  border: none;
+}
+
+
+
+table.tf-booking-grid {
+  width: 100%;
+}
+table.tf-booking-grid .not-available {
+  background-color: #ccc;
+  color: #888;
+}
+table.tf-booking-grid .booked {
+  background-color: #ccccff;
+  color: black;
+}
+table.tf-booking-grid .booked .box {
+  border: 1px solid #8787c2;
+}
+table.tf-booking-grid .free {
+  background-color: white;
+  color: black;
+}
+table.tf-booking-grid .free .box:hover {
+  background-color: rgb(208, 236, 208);
+}
+table.tf-booking-grid tr {
+  height: 1px;
+}
+table.tf-booking-grid tr td {
+  width: 12.5%;
+  height: 1px;
+}
+table.tf-booking-grid tr td .box {
+  padding: 3px;
+  height: 100%;
+  width: 100%;
+  text-decoration: none;
+}
+table.tf-booking-grid tr td .box:hover span.autohide {
+  visibility: visible;
+}
+table.tf-booking-grid tr td .box span {
+  display: inline-block;
+}
+table.tf-booking-grid tr td .box span.autohide {
+  visibility: hidden;
+  font-weight: bold;
+  margin: 0;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+
+.tf-nav-control {
+  margin-top: 1.1em;
+  margin-bottom: 1.1em;
+}
+.tf-nav-control .tf-left {
+  position: absolute;
+  left: 0;
+}
+.tf-nav-control .tf-center {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.tf-nav-control .tf-right {
+  float: right;
+}
+
+
+
+.tf-dialog-overlay {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.7803921569);
+}
+.tf-dialog-overlay .tf-dialog-container {
+  background-color: white;
+  display: block;
+  width: 60vw;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+.tf-dialog-overlay .tf-dialog-container .tf-dialog-button {
+  margin: 2px;
+}

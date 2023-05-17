@@ -1,0 +1,27 @@
+/******************************************************************************
+ *
+ *   Copyright Corvinus University of Budapest, Budapest, HUN.
+ *
+ * ---------------------------------------------------------------------------
+ *   This is a part of the RF.Modules.UIElements project
+ *
+ *   DEMO SITE THEME
+ *
+ *****************************************************************************/
+
+ @import "theme/font";
+ @import "theme/variables";
+
+ .nav-item {
+     .dropdown-item {
+        color: $cl-normal !important;
+
+        &:visited, &:focus {
+            color: $cl-normal !important;
+        }
+
+        &:hover {
+            color: white !important;
+        }
+     }
+ }

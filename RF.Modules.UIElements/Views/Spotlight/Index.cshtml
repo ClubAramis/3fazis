@@ -1,0 +1,15 @@
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<RF.Modules.UIElements.Models.SpotlightSettings>
+
+@using System.Text.RegularExpressions
+@using DotNetNuke.Web.Mvc.Helpers
+
+@{
+    var contentCssClass = Model.Invert ? "invert" : "normal";
+}
+
+<div class="rf-uielements-spotlight" style="background-image: url('@Model.ImagePath')">
+    <div class="content @Model.Vertically @Model.Horizontally">
+        <span class="title @contentCssClass">@Model.Title</span><br />
+        <span class="detail @contentCssClass">@Model.Detail</span>
+    </div>
+</div>

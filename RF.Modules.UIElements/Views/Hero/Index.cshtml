@@ -1,0 +1,14 @@
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<RF.Modules.UIElements.Models.HeroSettings>
+
+@using System.Text.RegularExpressions
+@using DotNetNuke.Web.Mvc.Helpers
+
+
+<div class="rf-uielements-hero" style="background-image: url('@Model.ImagePath')">
+    <div class="title-bar">
+        <h1 style="color: @Model.TitleColor">@Model.Title</h1>
+        <svg class="bar" height="66pt">
+            <rect width="80vw" height="66pt" />
+        </svg>
+    </div>
+</div>

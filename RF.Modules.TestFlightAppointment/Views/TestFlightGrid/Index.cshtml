@@ -1,0 +1,136 @@
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage
+
+@using DotNetNuke.Web.Client.ClientResourceManagement
+@using DotNetNuke.Framework.JavaScriptLibraries
+@using RF.Modules.TestFlightAppointment.Services
+@using RF.Modules.TestFlightAppointment.Models;
+@using RF.Modules.TestFlightAppointment.Util;
+@using System.Linq;
+
+@{
+    ClientResourceManager.RegisterScript(Dnn.DnnPage, "~/DesktopModules/MVC/RF.Modules.TestFlightAppointment/Scripts/BookingGrid.js");
+
+    var utcNow = DateTime.UtcNow;
+    var weekOfYear = (WeekOfYear)ViewBag.WeekOfYear;
+    var startDay = weekOfYear.FirstDay;
+    var localNow = DateTime.Now;
+
+    var bookings = ViewBag.Bookings as BookingData[]
+        ?? new BookingData[] { };
+    var prevline = new BookingData[7];
+    var thisWeek = new WeekOfYear(utcNow);
+    var nextWeek = weekOfYear.AddWeeks(1);
+    var prevWeek = weekOfYear.AddWeeks(-1);
+}
+
+<p>
+    Please remember, the dates in the grid are in UTC time as our flight operations
+    uses UTC time.
+</p>
+
+<div class="tf-header">
+    <h2>@(weekOfYear.FirstDay.ToShortDateString()) - @(weekOfYear.LastDay.ToShortDateString())</h2>
+    <hr />
+</div>
+
+<table class="tf-booking-grid">
+    <thead>
+        <tr>
+            <th></th>
+            @for (var i = 0; i < 7; i++)
+            {
+                var day = startDay.AddDays(i);
+                <th>
+                    @day.ToString("dddd")<br />
+                    (@day.ToShortDateString())
+                </th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @for (var i = 0; i < 8; i++)
+        {
+            var offset = TimeSpan.FromHours(i * 3);
+            var time = utcNow.Date + offset;
+
+            <tr>
+                <th>
+                    LOCAL: @time.ToLocalTime().ToString("HH:mm")<br />
+                    (UTC: @time.ToString("HH:mm"))
+                </th>
+                @for (var d = 0; d < 7; d++)
+                {
+                    var cellDay = startDay.AddDays(d);
+                    var cellTime = cellDay.AddHours(i * 3);
+                    var isPast = cellTime < utcNow;
+                    var isLocked = cellTime < utcNow.AddHours(12);
+                    var booking = bookings.FirstOrDefault(b => b.IsBookedAt(cellTime, 3));
+                    var isBooked = booking != null;
+                    var isFree = !isPast && !isLocked && !isBooked;
+                    var displayUserName = booking != null
+                        && booking.User != null
+                        && Dnn.User.IsAdmin;
+                    var cellCssClass = isPast || isLocked
+                        ? "not-available"
+                        : (isBooked ? "booked" : "free");
+                    var isRepeated = booking != null && prevline[d] == booking;
+                    prevline[d] = booking;
+                    // TODO: take in account the time starts the day before this
+                    var rowspan = booking == null ? 1 : (int)Math.Ceiling(booking.Duration / 3d);
+
+                    if (!isRepeated)
+                    {
+                        <td class="@cellCssClass" rowspan="@rowspan">
+
+
+                            @if (booking != null)
+                            {
+                                <a href="@Url.Action("Detail", "TestFlightGrid", new {ctl = "Detail", bookingID = booking.BookingID })">
+                                    <div class="box">
+                                        <span>
+                                            <strong>@(booking.Plan.Name)</strong><br />
+                                            @if (displayUserName)
+                                            {
+                                                @(booking.User.DisplayName)
+                                            }
+                                        </span>
+                                    </div>
+                                </a>
+                            }
+                            else if (isFree)
+                            {
+                                <a href="@Url.Action("Create", "TestFlightGrid", new {ctl = "Create", departureAt = cellTime })">
+                                    <div class="box">
+                                        <span class="autohide">Create booking</span>
+                                    </div>
+                                </a>
+                            }
+
+
+                        </td>
+                    }
+
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="tf-nav-control">
+    <a href="@Url.Action("Index")?year=@(nextWeek.Year)&week=@(nextWeek.Week)" class="dnnSecondaryAction tf-right">Next week</a>
+    <a href="@Url.Action("Index")?year=@(thisWeek.Year)&week=@(thisWeek.Week)" class="dnnSecondaryAction tf-center">This week</a>
+    <a href="@Url.Action("Index")?year=@(prevWeek.Year)&week=@(prevWeek.Week)" class="dnnSecondaryAction tf-left">Previuos week</a>
+</div>
+
+<script type="text/javascript">
+    /*globals jQuery, window, Sys */
+    (function($, Sys) {
+        var sf = $.ServicesFramework('@Dnn.ActiveModule.ModuleID');
+        // var serviceUrl = sf.getServiceRoot('TestFlightAppointmentApi');
+        var serviceUrl = sf.getServiceRoot('TestFlightBooking');
+
+        console.log("!!! WRN !!!" + @Dnn.ActiveModule.ModuleID);
+        console.log("!!! WRN !!!" + serviceUrl);
+
+    }(jQuery, window.Sys));
+</script>

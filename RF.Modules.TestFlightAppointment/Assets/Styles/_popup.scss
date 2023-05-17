@@ -1,0 +1,36 @@
+/******************************************************************************
+ *
+ *   Copyright Corvinus University of Budapest, Budapest, HUN.
+ *
+ * ---------------------------------------------------------------------------
+ *   This is a part of the RF.Modules.TestFlightAppointment project
+ *
+ *****************************************************************************/
+
+.tf-dialog-overlay {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+
+    background-color: #ffffffc7;
+
+    .tf-dialog-container {
+        background-color: white;
+        display: block;
+        width: 60vw;
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translateX(-50%) translateY(-50%);
+        transform: translateX(-50%) translateY(-50%);
+
+        .tf-dialog-button {
+            margin: 2px;
+        }
+    }
+}

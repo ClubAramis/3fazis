@@ -1,0 +1,48 @@
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<RF.Modules.UIElements.Models.SpotlightSettings>
+
+@using DotNetNuke.Web.Mvc.Helpers
+@{
+    var verticalValues = ViewBag.VerticalValues as System.Web.Mvc.SelectList;
+    var horizontalValues = ViewBag.HorizontalValues as System.Web.Mvc.SelectList;
+}
+
+<h2 id="dnnSitePanel-BasicSettings" class="dnnFormSectionHead"><a href="" class="dnnSectionExpanded">@Dnn.LocalizeString("BasicSettings")</a></h2>
+<fieldset>
+    <div class="dnnFormItem">
+        <div class="dnnLabel" style="position: relative;">
+            @Html.LabelFor(m => Model.ImagePath, new { @class = "col-md-2 control-label" })
+        </div>
+        @Html.TextBoxFor(m => Model.ImagePath)
+    </div>
+    <div class="dnnFormItem">
+        <div class="dnnLabel" style="position: relative;">
+            @Html.LabelFor(m => Model.Title, new { @class = "col-md-2 control-label" })
+        </div>
+        @Html.TextBoxFor(m => Model.Title)
+    </div>
+    <div class="dnnFormItem">
+        <div class="dnnLabel" style="position: relative;">
+            @Html.LabelFor(m => Model.Detail, new { @class = "col-md-2 control-label" })
+        </div>
+        @Html.TextAreaFor(m => Model.Detail)
+    </div>
+    <div class="dnnFormItem">
+        <div class="dnnLabel" style="position: relative;">
+            @Html.LabelFor(m => Model.Horizontally, new { @class = "col-md-2 control-label" })
+        </div>
+        @Html.DropDownListFor(m => Model.Horizontally, horizontalValues)
+    </div>
+    <div class="dnnFormItem">
+        <div class="dnnLabel" style="position: relative;">
+            @Html.LabelFor(m => Model.Vertically, new { @class = "col-md-2 control-label" })
+        </div>
+        @Html.DropDownListFor(m => Model.Vertically, verticalValues)
+    </div>
+    <div class="dnnFormItem">
+        <div class="dnnLabel" style="position: relative;">
+            @Html.LabelFor(m => Model.Invert, new { @class = "col-md-2 control-label" })
+        </div>
+        @Html.CheckBoxFor(m => Model.Invert)
+    </div>
+</fieldset>
+

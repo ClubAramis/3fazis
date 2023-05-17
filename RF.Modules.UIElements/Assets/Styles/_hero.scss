@@ -1,0 +1,53 @@
+/******************************************************************************
+ *
+ *   Copyright Corvinus University of Budapest, Budapest, HUN.
+ *
+ * ---------------------------------------------------------------------------
+ *   This is a part of the RF.Modules.UIElements project
+ *
+ *****************************************************************************/
+
+$title-font-size: 66pt;
+$content-offset: -102px;
+
+.rf-uielements-hero {
+    position: relative;
+    top: $content-offset;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    margin-bottom: $content-offset;
+    overflow: hidden;
+
+    .title-bar {
+        position: relative;
+        top: 60vh;
+        width: 100vw;
+        overflow: hidden;
+
+        h1 {
+            position: relative;
+            margin-left: 80px;
+            font-size: $title-font-size;
+            margin-bottom: 22pt;
+        }
+    
+        .bar {
+            font-size: $title-font-size;
+            position: relative;
+            width: 100vw;
+    
+            rect {
+                fill: #ED7D31;
+                opacity: .8;
+    
+            }
+        }
+
+    }
+
+}

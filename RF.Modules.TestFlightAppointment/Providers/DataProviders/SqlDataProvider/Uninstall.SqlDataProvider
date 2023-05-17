@@ -1,0 +1,9 @@
+﻿IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}{objectQualifier}TestFlightParticipants') AND type in (N'U'))
+DROP TABLE {databaseOwner}{objectQualifier}TestFlightParticipants
+GO
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}{objectQualifier}TestFlightBookings') AND type in (N'U'))
+DROP TABLE {databaseOwner}{objectQualifier}TestFlightBookings
+GO
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}{objectQualifier}TestFlightPlans') AND type in (N'U'))
+DROP TABLE {databaseOwner}{objectQualifier}TestFlightPlans
+GO

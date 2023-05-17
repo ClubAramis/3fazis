@@ -1,0 +1,119 @@
+/******************************************************************************
+ *
+ *   Copyright Corvinus University of Budapest, Budapest, HUN.
+ *
+ * ---------------------------------------------------------------------------
+ *   This is a part of the RF.Modules.TestFlightAppointment project
+ *
+ *****************************************************************************/
+
+$error-grad-start: #ea3535; 
+$error-grad-end: #cd2121;
+
+$error-hover-grad-start: #f36c6c;
+$error-hover-grad-end: #d24343;
+
+.dnnDeleteAction,
+.dnnPrimaryAction {
+    padding: 6px 6px;
+    line-height: 18px;
+}
+
+@mixin dnn-button-gradient($cl-start, $cl-end) {
+    background: -moz-linear-gradient(top, $cl-start 0%, $cl-end 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$cl-start), color-stop(100%,$cl-end)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, $cl-start 0%,$cl-end 100%); /* Chrome10+,Safari5.1+ */
+    background: linear-gradient(top, $cl-start 0%,$cl-end 100%); /* W3C */
+
+}
+
+@mixin dnn-button {
+    display: inline-block;
+    margin-bottom: 9px;
+    cursor: pointer;
+    min-width: 75px;
+    *overflow: visible;
+    border: 1px solid #c2c2c2;
+    background: #eaeaea;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    color: #333;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+}
+
+.dnnFormItem {
+    input,
+    select {
+        height: 34px;
+    }
+}
+
+fieldset.dnnInlineForm {
+    display: flex;
+    flex-direction: row;
+
+    .dnnFormItem {
+        display: inline-block;
+        flex-grow: 1;
+        flex-basis: 0;
+        width: unset;
+        padding-right: 10px;
+
+        &:last-child {
+            padding-right: 0px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            max-width: unset;
+            box-sizing: border-box;
+        }
+
+        .dnnFormError {
+            top: -15px;
+            display: inline-block;
+            position: relative;
+            margin-left: 13px;
+            color: red;
+        }
+    }
+}
+
+.dnnDeleteAction {
+    @include dnn-button();
+
+    border-color: #9e0d0d; /*dark blue*/
+    background: #ed3737;
+    -webkit-box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.6), inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4);
+    box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.6), inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4);
+    color: #efefef;
+    text-shadow: 0px -1px 0px #931818;
+    
+    @include dnn-button-gradient($error-grad-start, $error-grad-end);
+
+    &:hover {
+        border-color: #9e0d0d;
+        background: #f36c6c;
+        color: #fff;
+
+        @include dnn-button-gradient($error-hover-grad-start, $error-hover-grad-end);
+    }
+
+    &:visited {
+        color: white;
+    }
+
+    &:active {
+        border-color: #9e0d0d;
+        background: #be1f1f;
+        -webkit-box-shadow: inset 0px 1px 5px 0px rgb(0 0 0 / 40%);
+        box-shadow: inset 0px 1px 5px 0px rgb(0 0 0 / 40%);
+        color: #fff;
+
+        @include dnn-button-gradient(#be1f1f, #e03030);
+    }
+}
+

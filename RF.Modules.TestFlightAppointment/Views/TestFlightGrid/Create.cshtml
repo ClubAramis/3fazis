@@ -1,0 +1,115 @@
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<RF.Modules.TestFlightAppointment.Models.CreateBookingParameters>
+
+@using System.Web.Mvc;
+
+@using DotNetNuke.Web.Client.ClientResourceManagement
+@using DotNetNuke.Framework.JavaScriptLibraries
+
+@using RF.Modules.TestFlightAppointment.Models;
+
+@{
+    ClientResourceManager.RegisterScript(Dnn.DnnPage, "~/DesktopModules/MVC/RF.Modules.TestFlightAppointment/Scripts/BookingGrid.js");
+
+    var plans = ViewBag.Plans as TestFlightPlan[]
+        ?? new RF.Modules.TestFlightAppointment.Models.TestFlightPlan[0];
+    var planOptions = new SelectList(plans, "FlightPlanID", "Name");
+    var passengerTypeOptions = ViewBag.PassengerTypes as SelectList;
+    var submitID = String.Format("submit-{0}", Guid.NewGuid());
+    var errorID = String.Format("error-{0}", Guid.NewGuid());
+    var formID = String.Format("form-{0}", Guid.NewGuid());
+    var passengersFormID = String.Format("passengers-{0}", Guid.NewGuid());
+}
+
+<h1>Create a booking</h1>
+
+@using System.Collections.Generic
+@using DotNetNuke.Web.Mvc.Helpers
+
+<div id="Item-@Dnn.ModuleContext.ModuleId">
+    <div class="dnnForm dnnEditBasicSettings" id="@formID">
+        <p id="@errorID"></p>
+        <fieldset>
+            <div class="dnnFormItem">
+                <div><label for="departureAt">Departure at</label></div>
+                <p>@Model.DepartureAt</p>
+                @Html.HiddenFor(m => m.DepartureAt)
+            </div>
+            <div class="dnnFormItem">
+                <div><label for="planID">Flight plan</label></div>
+                @Html.DropDownListFor(m => m.PlanID, planOptions)
+            </div>
+        </fieldset>
+    </div>
+
+    <div class="dnnForm" id="@passengersFormID">
+        <h2>Passengers</h2>
+        @for (var i = 0; i < 5; i++)
+        {
+            <fieldset class="dnnInlineForm" data-role="tf-passenger-row">
+                <div class="dnnFormItem">
+                    <div><label for="planID">Role</label></div>
+                    @Html.DropDownList("PassengerRole", passengerTypeOptions)
+                    @Html.ValidationMessage("PassengerRole", "This field is mandatory.")
+                </div>
+                <div class="dnnFormItem">
+                    <div><label for="departureAt">Name</label></div>
+                    @Html.TextBox("PassengerName")
+                    @Html.ValidationMessage("PassengerName", "This field is mandatory.")
+                </div>
+                <div class="dnnFormItem">
+                    <div><label for="departureAt">License</label></div>
+                    @Html.TextBox("PilotLicense")
+                    @Html.ValidationMessage("PassengerName", "This field is mandatory for pilots.")
+                </div>
+            </fieldset>
+
+        }
+    </div>
+
+    <button type="button" id="@submitID" class="dnnPrimaryAction">Book Test Flight</button>
+    <a id="cancelEdit" href="#" class="dnnSecondaryAction">Cancel</a>
+</div>
+
+<script type="text/javascript">
+    (function ($, Sys) {
+        $(function () {
+            $('#cancelEdit').click(function () { dnnModal.closePopUp(false); });
+
+            var passengerGrid = new BookingGridForm('#@passengersFormID');
+
+            $('#@submitID').click(function () {
+                if (!passengerGrid.validate())
+                    return;
+
+                var planID = $('#@formID')
+                    .find('[name="PlanID"]')
+                    .val();
+                var data = {
+                    planID,
+                    departureAt: '@Model.DepartureAt.ToString("s")'
+                };
+
+                var proxy = new TestFlightBookingProxy(
+                    '@Dnn.ActiveModule.ModuleID',
+                    'TestFlightBooking'
+                );
+                passengerGrid.submit(
+                    proxy,
+                    data,
+                    function (success, response) {
+                        if (success) {
+                            dnnModal.closePopUp(true);
+
+                        } else {
+                            $('#@errorID').html(response);
+
+                        }
+                    });
+            });
+        });
+
+
+
+
+    }(jQuery, window.Sys));
+</script>

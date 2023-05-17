@@ -1,0 +1,86 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}{objectQualifier}TestFlightParticipants') AND type in (N'U'))
+DROP TABLE {databaseOwner}{objectQualifier}TestFlightParticipants
+GO
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}{objectQualifier}TestFlightBookings') AND type in (N'U'))
+DROP TABLE {databaseOwner}{objectQualifier}TestFlightBookings
+GO
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}{objectQualifier}TestFlightPlans') AND type in (N'U'))
+DROP TABLE {databaseOwner}{objectQualifier}TestFlightPlans
+GO
+
+CREATE TABLE {databaseOwner}{objectQualifier}TestFlightPlans
+    (
+        [FlightPlanID] INT NOT NULL IDENTITY (1, 1)
+                CONSTRAINT [PK_TestFlightPlans] PRIMARY KEY CLUSTERED,
+
+        [Name] NVARCHAR(1024),
+        [Duration] INT,
+        [Description] NVARCHAR(MAX),
+        [IsPublic] BIT
+        
+    )  ON [PRIMARY]
+    TEXTIMAGE_ON [PRIMARY]
+GO
+
+CREATE TABLE {databaseOwner}{objectQualifier}TestFlightBookings
+    (
+        [BookingID] INT NOT NULL IDENTITY (1, 1)
+                CONSTRAINT [PK_TestFlightBookings] PRIMARY KEY CLUSTERED,
+	    [CreatedByUserID] [int] NULL,
+	    [CreatedOnDate] [datetime] NULL,
+        [IsCancelled] BIT,
+        [DepartureAt] [datetime],
+        [Duration] INT,
+        [FlightPlanID] INT
+
+    )  ON [PRIMARY]
+GO
+
+ALTER TABLE {databaseOwner}{objectQualifier}TestFlightBookings WITH NOCHECK ADD CONSTRAINT [FK_TestFlightBookings_TestFlightPlans] FOREIGN KEY ([FlightPlanID])
+    REFERENCES {databaseOwner}{objectQualifier}TestFlightPlans ([FlightPlanID])
+    ON DELETE CASCADE
+GO
+
+CREATE TABLE {databaseOwner}{objectQualifier}TestFlightParticipants
+    (
+        [ParticipantID] INT NOT NULL IDENTITY (1, 1)
+                CONSTRAINT [PK_TestFlightParticipants] PRIMARY KEY CLUSTERED,
+	    [BookingID]	INT,
+	    [CreatedByUserID] [int] NULL,
+	    [CreatedOnDate] [datetime] NULL,
+        [PassengerName] NVARCHAR(2048),
+        [Role] NVARCHAR(32),
+        [PilotLicense] NVARCHAR(32),
+
+    )  ON [PRIMARY]
+GO
+
+ALTER TABLE {databaseOwner}{objectQualifier}TestFlightParticipants WITH NOCHECK ADD CONSTRAINT [FK_TestFlightParticipants_TestFlightBookings] FOREIGN KEY ([BookingID])
+    REFERENCES {databaseOwner}{objectQualifier}TestFlightBookings ([BookingID])
+    ON DELETE CASCADE
+GO
+
+INSERT INTO [TestFlightPlans] (
+	[Name], [Duration], [IsPublic], [Description]
+	) VALUES
+	('Sol Tour', 2, 1, ''),
+	('Near Space Tour', 2, 1, ''),
+	('Deep Space Tour', 5, 1, ''),
+	('Maintnance', 2, 0, ''),
+	('All Day VIP Tour', 23, 0, '');
+GO
+
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/

@@ -1,0 +1,111 @@
+<dotnetnuke type="Package" version="5.0">
+	<packages>
+		<package name="RF.Modules.TestFlightAppointment" type="Module" version="00.00.02">
+			<friendlyName>Test Flight Appointment</friendlyName>
+			<description>This module adds complete capability for managing test flight appointments.</description>
+			<iconFile>~/Icons/Sigma/Software_32X32_Standard.png</iconFile>
+			<owner>
+				<name>BCE</name>
+				<organization>BCE</organization>
+				<url>https://www.christoc.com/</url>
+				<email>adam.halassy@stud.uni-corvinus.hu</email>
+			</owner>
+			<license src="License.txt"></license>
+			<releaseNotes src="ReleaseNotes.txt"></releaseNotes>
+			<dependencies>
+				<dependency type="CoreVersion">09.08.00</dependency>
+			</dependencies>
+			<components>
+				<component type="Script">
+					<scripts>
+						<basePath>DesktopModules\MVC\RF.Modules.TestFlightAppointment</basePath>
+						<script type="Install">
+							<path>Providers\DataProviders\SqlDataProvider</path>
+							<name>00.00.01.SqlDataProvider</name>
+							<version>00.00.01</version>
+						</script>
+						<script type="UnInstall">
+							<path>Providers\DataProviders\SqlDataProvider</path>
+							<name>Uninstall.SqlDataProvider</name>
+							<version>00.00.01</version>
+						</script>
+					</scripts>
+				</component>
+				<component type="ResourceFile">
+					<resourceFiles>
+						<basePath>DesktopModules/MVC/RF.Modules.TestFlightAppointment</basePath>
+						<resourceFile>
+							<name>Resources.zip</name>
+						</resourceFile>
+					</resourceFiles>
+				</component>
+				<component type="Module">
+					<desktopModule>
+						<moduleName>Test Flight Appointment</moduleName>
+						<foldername>RF.Modules.TestFlightAppointment</foldername>
+						<businessControllerClass>RF.Modules.TestFlightAppointment.Components.FeatureController</businessControllerClass>
+						<supportedFeatures />
+						<moduleDefinitions>
+							<moduleDefinition>
+								<friendlyName>Test Flight Booking Grid</friendlyName>
+								<defaultCacheTime>0</defaultCacheTime>
+								<moduleControls>
+									<moduleControl>
+										<controlKey />
+										<controlSrc>RF.Modules.TestFlightAppointment.Controllers/TestFlightGrid/Index.mvc</controlSrc>
+										<supportsPartialRendering>False</supportsPartialRendering>
+										<controlTitle />
+										<controlType>View</controlType>
+										<iconFile />
+										<helpUrl />
+										<viewOrder>0</viewOrder>
+									</moduleControl>
+									<moduleControl>
+										<controlKey>Create</controlKey>
+										<controlSrc>RF.Modules.TestFlightAppointment.Controllers/TestFlightGrid/Create.mvc</controlSrc>
+										<supportsPartialRendering>True</supportsPartialRendering>
+										<controlTitle />
+										<controlType>View</controlType>
+										<iconFile />
+										<helpUrl />
+										<viewOrder>0</viewOrder>
+										<supportsPopUps>True</supportsPopUps>
+									</moduleControl>
+									<moduleControl>
+										<controlKey>Detail</controlKey>
+										<controlSrc>RF.Modules.TestFlightAppointment.Controllers/TestFlightGrid/Detail.mvc</controlSrc>
+										<supportsPartialRendering>True</supportsPartialRendering>
+										<controlTitle />
+										<controlType>View</controlType>
+										<iconFile />
+										<helpUrl />
+										<viewOrder>0</viewOrder>
+										<supportsPopUps>True</supportsPopUps>
+									</moduleControl>
+									<moduleControl>
+										<controlKey>Settings</controlKey>
+										<controlSrc>RF.Modules.TestFlightAppointment.Controllers/Settings/Settings.mvc</controlSrc>
+										<supportsPartialRendering>False</supportsPartialRendering>
+										<controlTitle>RF.Modules.TestFlightAppointment Settings</controlTitle>
+										<controlType>Edit</controlType>
+										<iconFile />
+										<helpUrl />
+										<viewOrder>0</viewOrder>
+									</moduleControl>
+								</moduleControls>
+							</moduleDefinition>
+						</moduleDefinitions>
+					</desktopModule>
+				</component>
+				<component type="Assembly">
+					<assemblies>
+						<assembly>
+							<name>RF.Modules.TestFlightAppointment.dll</name>
+							<path>bin</path>
+						</assembly>
+					</assemblies>
+				</component>
+			</components>
+		</package>
+	</packages>
+</dotnetnuke>

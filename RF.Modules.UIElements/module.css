@@ -1,0 +1,103 @@
+
+
+.rf-uielements-hero {
+  position: relative;
+  top: -102px;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  margin-bottom: -102px;
+  overflow: hidden;
+}
+.rf-uielements-hero .title-bar {
+  position: relative;
+  top: 60vh;
+  width: 100vw;
+  overflow: hidden;
+}
+.rf-uielements-hero .title-bar h1 {
+  position: relative;
+  margin-left: 80px;
+  font-size: 66pt;
+  margin-bottom: 22pt;
+}
+.rf-uielements-hero .title-bar .bar {
+  font-size: 66pt;
+  position: relative;
+  width: 100vw;
+}
+.rf-uielements-hero .title-bar .bar rect {
+  fill: #ED7D31;
+  opacity: 0.8;
+}
+
+
+.rf-uielements-spotlight {
+  position: relative;
+  margin: 0 -15px;
+  padding: 0;
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  overflow: hidden;
+}
+.rf-uielements-spotlight .content {
+  position: relative;
+  width: 100vw;
+  overflow: hidden;
+}
+.rf-uielements-spotlight .content.top {
+  top: 0;
+  margin-top: 80px;
+}
+.rf-uielements-spotlight .content.bottom {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 80px;
+}
+.rf-uielements-spotlight .content.left {
+  margin-left: 80px;
+}
+.rf-uielements-spotlight .content.right {
+  margin-right: 80px;
+  text-align: right;
+}
+.rf-uielements-spotlight .content .title,
+.rf-uielements-spotlight .content .detail {
+  display: inline-block;
+  position: relative;
+  margin-left: 80px;
+}
+.rf-uielements-spotlight .content .title {
+  display: inline-block;
+  padding: 0px 11px;
+  position: relative;
+  text-transform: uppercase;
+  font-size: 24pt;
+  font-weight: lighter;
+  margin-bottom: 0;
+}
+.rf-uielements-spotlight .content .title.normal {
+  color: black;
+  background-color: white;
+}
+.rf-uielements-spotlight .content .title.invert {
+  color: white;
+  background-color: black;
+}
+.rf-uielements-spotlight .content .detail {
+  font-size: 14pt;
+  margin-bottom: 14pt;
+  max-width: 50vw;
+}
+.rf-uielements-spotlight .content .detail.normal {
+  color: white;
+}
+.rf-uielements-spotlight .content .detail.invert {
+  color: black;
+}

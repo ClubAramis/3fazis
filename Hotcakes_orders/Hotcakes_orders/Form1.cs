@@ -29,52 +29,32 @@ namespace Hotcakes_orders
             GetProduct();
         }
 
-        private void createOrderButton_Click(object sender, EventArgs e)
+        public void SavedItem(string bvin)
         {
             string url = "http://20.234.113.211:8091/";
             string key = "1-36f61538-6409-4681-bce7-abd31e56fe80";
 
             Api proxy = new Api(url, key);
 
-            // create a new order object
-            var order = new OrderDTO();
+            var productDTO = proxy.ProductsFind(bvin).Content;
 
-            // add billing information
-            order.BillingAddress = new AddressDTO
-            {
-                AddressType = AddressTypesDTO.Billing,
-                City = "West Palm Beach",
-                CountryBvin = "BF7389A2-9B21-4D33-B276-23C9C18EA0C0",
-                FirstName = "John",
-                LastName = "Dough",
-                Line1 = "319 N. Clematis Street",
-                Line2 = "Suite 600",
-                Phone = "561-228-5319",
-                PostalCode = "33401",
-                RegionBvin = "7EBE4F07-A844-47B8-BDA8-863DDDF5C778"
-            };
-
-            // add at least one line item
-            order.Items = new List<LineItemDTO>();
-            order.Items.Add(new LineItemDTO
-            {
-                ProductId = "dfcae0ee-8bcf-4321-8b31-7883b5434285",
-                Quantity = 1
-            });
-
-            // add the shipping address
-            order.ShippingAddress = new AddressDTO();
-            order.ShippingAddress = order.BillingAddress;
-            order.ShippingAddress.AddressType = AddressTypesDTO.Shipping;
-
-            // specify who is creating the order
-            order.UserEmail = "info@hotcakescommerce.com";
-            order.UserID = "1";
+            int i;
+            int.TryParse(textBox1.Text, out i);
+            productDTO.SitePrice = i;
 
             // call the API to create the order
-            ApiResponse<OrderDTO> response = proxy.OrdersCreate(order);
+            ApiResponse<ProductDTO> response = proxy.ProductsUpdate(productDTO);
 
-            GetCategory();
+            GetProduct();
+        }
+
+        private void createOrderButton_Click(object sender, EventArgs e)
+        {
+            int k = ordersDataGridView.SelectedCells[0].RowIndex;
+            DataGridViewRow dr = ordersDataGridView.Rows[k];
+            string s = dr.Cells[0].Value.ToString();
+            SavedItem(s);
+            GetProduct();
         }
 
         private void deleteOrderButton_Click(object sender, EventArgs e)
@@ -160,6 +140,14 @@ namespace Hotcakes_orders
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             GetProduct();
+        }
+
+        private void ordersDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int k = ordersDataGridView.SelectedCells[0].RowIndex;
+            DataGridViewRow dr = ordersDataGridView.Rows[k];
+            string s = dr.Cells[5].Value.ToString();
+            textBox1.Text = s;
         }
 
         //private void button1_Click(object sender, EventArgs e)

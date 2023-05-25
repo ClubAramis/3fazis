@@ -42,7 +42,6 @@ namespace Hotcakes_orders
             int.TryParse(textBox1.Text, out i);
             productDTO.SitePrice = i;
 
-            // call the API to create the order
             ApiResponse<ProductDTO> response = proxy.ProductsUpdate(productDTO);
 
             GetProduct();
@@ -64,7 +63,6 @@ namespace Hotcakes_orders
 
             Api proxy = new Api(url, key);
 
-            // call the API to find all orders in the store
             ApiResponse<List<CategorySnapshotDTO>> response = proxy.CategoriesFindAll();
             string json = JsonConvert.SerializeObject(response);
 

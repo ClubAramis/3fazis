@@ -57,25 +57,6 @@ namespace Hotcakes_orders
             GetProduct();
         }
 
-        private void deleteOrderButton_Click(object sender, EventArgs e)
-        {
-            string url = "http://20.234.113.211:8091/";
-            string key = "1-36f61538-6409-4681-bce7-abd31e56fe80";
-
-            Api proxy = new Api(url, key);
-
-            // specify the order to delete
-            int rowIndex = ordersDataGridView.CurrentCell.RowIndex;
-            int columnIndex = ordersDataGridView.CurrentCell.ColumnIndex;
-
-            var orderId = ordersDataGridView[columnIndex, rowIndex].Value.ToString();
-
-            // call the API to delete the order
-            ApiResponse<bool> response = proxy.OrdersDelete(orderId);
-
-            GetCategory();
-        }
-
         public void GetCategory()
         {
             string url = "http://20.234.113.211:8091/";
@@ -112,24 +93,15 @@ namespace Hotcakes_orders
 
             CategoryDTO ujkat = new CategoryDTO();
 
-            //CategoryDTO kat = listBox1.SelectedItem as CategoryDTO;
-
             ujkat.Name = listBox1.GetItemText(listBox1.SelectedItem);
 
-            //Console.WriteLine(ujkat.Bvin);
-        
-            // specify a category to look for products in
             var katID = kategoriak[ujkat.Name];
         
-            // specify the page number to retrieve
             var page = 1;
         
-            // specify the number of results per page
-            var pageSize = int.MaxValue; // if you want all products, then use int.MaxValue here
+            var pageSize = int.MaxValue;
         
             
-        
-            // call the API to find all products in the store matching the category & page criteria
             ApiResponse<PageOfProducts> response = proxy.ProductsFindForCategory(katID, page, pageSize);
             string json = JsonConvert.SerializeObject(response);
             
@@ -150,9 +122,20 @@ namespace Hotcakes_orders
             textBox1.Text = s;
         }
 
-        //private void button1_Click(object sender, EventArgs e)
-        //{
-        //
-        //}
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            string url = "http://20.234.113.211:8091/";
+            string key = "1-36f61538-6409-4681-bce7-abd31e56fe80";
+
+            Api proxy = new Api(url, key);
+
+            int k = ordersDataGridView.SelectedCells[0].RowIndex;
+            DataGridViewRow dr = ordersDataGridView.Rows[k];
+            string s = dr.Cells[0].Value.ToString();
+
+            ApiResponse<bool> response = proxy.ProductsDelete(s);
+
+            GetProduct();
+        }
     }
 }
